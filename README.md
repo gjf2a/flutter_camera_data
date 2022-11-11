@@ -11,17 +11,26 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+This library contains code to convert YUV images from the [camera](https://pub.dev/packages/camera) 
+package into RGB format. It also contains a widget to display the converted images.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+The `CameraImagePainter` widget displays a live camera image in a Flutter UI.
+
+The `rbgaBytesFrom()` function converts a `CameraImage` object into a `Uint8List` object containing
+four bytes for each image pixel. The bytes are in the sequence Red, Green, Blue, Alpha.
+
+The `makeImageFrom()` function converts a `Uint8List` representing an RGBA image into a 
+[`dartui.Image`](https://api.flutter.dev/flutter/dart-ui/Image-class.html) object. 
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add the following to `pubspec.yaml`:
+```yaml
+  flutter_camera_data:
+    git: https://github.com/gjf2a/flutter_camera_data
+```
 
 ## Usage
 

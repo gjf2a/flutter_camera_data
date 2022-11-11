@@ -19,7 +19,7 @@ class CameraImagePainter extends CustomPainter {
       _start = DateTime.now();
       _initialized = true;
     }
-    _lastImage = await makeColorFrom(img);
+    _lastImage = await makeImageFrom(rgbaBytesFrom(img), img.width, img.height);
     _width = _lastImage.width;
     _height = _lastImage.height;
     _frameCount += 1;
@@ -44,7 +44,7 @@ class CameraImagePainter extends CustomPainter {
 }
 
 // Adapted from: https://stackoverflow.com/a/57604820/906268
-Future<dartui.Image> makeColorFrom(CameraImage img) async {
+Uint8List rgbaBytesFrom(CameraImage img) {
   final int uvRowStride = img.planes[1].bytesPerRow;
   final int uvPixelStride = img.planes[1].bytesPerPixel!;
   Uint8List proc = Uint8List(img.width * img.height * 4);
@@ -62,7 +62,7 @@ Future<dartui.Image> makeColorFrom(CameraImage img) async {
       proc[procIndex + 3] = 255;
     }
   }
-  return makeImageFrom(proc, img.width, img.height);
+  return proc;
 }
 
 // This is super-clunky. I wonder if there's a better way...
