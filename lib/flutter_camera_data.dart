@@ -56,7 +56,7 @@ Uint8List rgbaBytesFrom(CameraImage img) {
       final int yp = img.planes[0].bytes[yIndex];
       final int up = img.planes[1].bytes[uvIndex];
       final int vp = img.planes[2].bytes[uvIndex];
-      proc[procIndex] = (yp + vp * 1436 ~/ 1024 - 19).clamp(0, 255);
+      proc[procIndex] = (yp + vp * 1436 ~/ 1024 - 179).clamp(0, 255);
       proc[procIndex + 1] = (yp - up * 46549 ~/ 131072 + 44 - vp * 93604 ~/ 131072 + 91).clamp(0, 255);
       proc[procIndex + 2] = (yp + up * 1814 ~/ 1024 - 227).clamp(0, 255);
       proc[procIndex + 3] = 255;
